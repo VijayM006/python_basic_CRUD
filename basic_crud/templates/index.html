@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        table{
+            background-color: aqua;
+
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        <label for="Name">Name</label>
+        <input type="text" name="Name">
+        <label for="Age">Age</label>
+        <input type="number" name="Age">
+        <label for="RollNo">RollNo</label>
+        <input type="number" name="RollNo">
+        <label for="mark1">mark1</label>
+        <input type="number" name="mark1"><br>
+        <label for="mark2">mark2</label>
+        <input type="number" name="mark2">
+        <label for="mark3">mark3</label>
+        <input type="number" name="mark3">
+        <label for="mark4">mark4</label>
+        <input type="number" name="mark4">
+        <label for="mark5">mark5</label>
+        <input type="number" name="mark5">
+
+        <input type="submit" value="submit">
+
+    </form>
+    {{data}}
+    <table border="all"style="border-collapse: collapse; text-align: center;width:100%;">
+        <tr>
+            <th colspan="4">Student details</th>
+            <th colspan="5">Marks</th>
+            <th colspan=2"">Action</th>
+        </tr>
+        <tr>
+            <th>SI.No</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>RollNo</th>
+            <th>marks1</th>
+            <th>mark2</th>
+            <th>mark3</th>
+            <th>mark4</th>
+            <th>mark5</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+            {%for i in student %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{i.Name}}</td>
+            <td>{{i.Age}}</td>
+            <td>{{i.RollNo}}</td>
+            {%for j in i.Marks %}
+            <td>{{j}}</td>
+            {%endfor%}
+            <td><a href="{{url_for('edit',index=loop.index)}}">Edit</a></td>
+            <td><a href="{{url_for('delete',index=loop.index)}}">Delete</a></td>
+        </tr>
+        {%endfor%}
+    </table>
+</body>
+</html>
